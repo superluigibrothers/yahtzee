@@ -1,7 +1,6 @@
-package org.superluigi.yahtzee
+package org.superluigi.yahtzee.view
 
 import javafx.application.Application
-import org.superluigi.yahtzee.view.View
 
 fun main(args: Array<String>) {
 
