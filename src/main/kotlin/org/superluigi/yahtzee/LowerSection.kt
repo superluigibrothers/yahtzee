@@ -1,33 +1,25 @@
 package org.superluigi.yahtzee
 
-import org.superluigi.yahtzee.model.Die
-import org.superluigi.yahtzee.view.Face
+class LowerSection(private val dice: List<Int>) {
 
-class LowerSection(private val dice: List<Die>) {
-
-    private val faces = dice.map { it.face }
-
-    private val values =
-        faces.map { face ->
-            Face.toInteger(face)
-        }
-
-    private val sumOfAllDice = Sum.calculate(values)
+    private val sumOfAllDice = Sum.calculate(dice)
 
     private val counts =
-        Face.values
-            .map { face ->
-                faces.filter { it == face }.size
+        setOf(1, 2, 3, 4, 5, 6)
+            .map { number ->
+
+                dice.filter { it == number }.size
+
             }
 
     private val threeOfAKind =
-        if (counts.min()!! >= 3)
+        if (counts.contains(3))
             sumOfAllDice
         else
             0
 
     private val fourOfAKind =
-        if (counts.min()!! >= 4)
+        if (counts.contains(4))
             sumOfAllDice
         else
             0
@@ -40,9 +32,9 @@ class LowerSection(private val dice: List<Die>) {
 
     private val smallStraight =
         if (
-            faces.containsAllRaw(setOf(Face.ONE, Face.TWO, Face.THREE, Face.FOUR)) ||
-            faces.containsAllRaw(setOf(Face.TWO, Face.THREE, Face.FOUR, Face.FIVE)) ||
-            faces.containsAllRaw(setOf(Face.THREE, Face.FOUR, Face.FIVE, Face.SIX))
+            dice.containsAll(setOf(1, 2, 3, 4)) ||
+            dice.containsAll(setOf(2, 3, 4, 5)) ||
+            dice.containsAll(setOf(3, 4, 5, 6))
         )
             30
         else
@@ -50,15 +42,15 @@ class LowerSection(private val dice: List<Die>) {
 
     private val largeStraight =
         if (
-            faces.containsAllRaw(setOf(Face.ONE, Face.TWO, Face.THREE, Face.FOUR, Face.FIVE)) ||
-            faces.containsAllRaw(setOf(Face.TWO, Face.THREE, Face.FOUR, Face.FIVE, Face.SIX))
+            dice.containsAll(setOf(1, 2, 3, 4, 5)) ||
+            dice.containsAll(setOf(2, 3, 4, 5, 6))
         )
             40
         else
             0
 
     private val yahtzee =
-        if (faces.distinct().size == 1)
+        if (dice.distinct().size == 1)
             50
         else
             0
