@@ -1,11 +1,27 @@
 package org.superluigi.yahtzee
 
-import org.apache.commons.lang3.NotImplementedException
+import org.superluigi.yahtzee.model.GameState
+import org.superluigi.yahtzee.view.DisplayScoreSelection
 
 object ScoreSelection {
 
     fun apply() {
-        throw NotImplementedException("Successful Fail! :)")
+
+        val upperSection = UpperSection(GameState.dice)
+        val lowerSection = LowerSection(GameState.dice)
+
+        val scoreSheet =
+            if (GameState.usersTurn)
+                GameState.userScoreSheet
+            else
+                GameState.aiScoreSheet
+
+        val availableScores = AvailabeScores.get(scoreSheet, upperSection, lowerSection)
+
+        DisplayScoreSelection.apply(availableScores)
+
+        // Refresh the score sheet somehow.
+
     }
 }
 

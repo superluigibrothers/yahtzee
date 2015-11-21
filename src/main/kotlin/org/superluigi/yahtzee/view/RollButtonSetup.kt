@@ -1,26 +1,19 @@
 package org.superluigi.yahtzee.view
 
-import javafx.event.ActionEvent
-import javafx.event.EventHandler
 import javafx.geometry.Insets
 import javafx.scene.control.Button
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.RowConstraints
 import javafx.scene.text.Font
-import org.superluigi.yahtzee.Roll
-import org.superluigi.yahtzee.model.Die
 
-class RollButtonSetup(
-    val dice: List<Die>,
-    val diceButtons: List<Button>
-) {
+object RollButtonSetup {
 
     val rollPane = BorderPane()
     val rollPaneRow = RowConstraints()
     val rollButton = Button("ROLL!")
 
-    fun addToGrid(grid: GridPane) {
+    fun apply(grid: GridPane): Button {
 
         rollPaneRow.percentHeight = 5.0
 
@@ -33,37 +26,13 @@ class RollButtonSetup(
 
         rollButton.font = Font("Lucida Console", 45.0)
 
-        rollButton.onAction =
-
-            object: EventHandler<ActionEvent> {
-
-                override fun handle(event: ActionEvent) {
-
-                    val diceToRoll = dice.filter { !it.locked }
-
-                    diceToRoll.forEach { die ->
-
-                        die.face = Roll.apply()
-
-                    }
-
-                    dice.forEachIndexed { index, die ->
-
-                        val dieButton = diceButtons[index]
-
-                        SetBackground.apply(die, dieButton)
-
-                    }
-
-                }
-
-            }
-
         grid.rowConstraints.add(rollPaneRow)
 
         rollPane.center = rollButton
 
         grid.add(rollPane, 0, 1)
+
+        return rollButton
 
     }
 

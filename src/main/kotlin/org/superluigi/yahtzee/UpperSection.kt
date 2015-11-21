@@ -1,13 +1,16 @@
 package org.superluigi.yahtzee
 
-class UpperSection(private val dice: List<Int>) {
+import org.superluigi.yahtzee.model.Die
+import org.superluigi.yahtzee.view.Face
 
-    private val ones = dice.filter { it == 1 }.size * 1
-    private val twos = dice.filter { it == 2 }.size * 2
-    private val threes = dice.filter { it == 3}.size * 3
-    private val fours = dice.filter { it == 4 }.size * 4
-    private val fives = dice.filter { it == 5 }.size * 5
-    private val sixes = dice.filter { it == 6 }.size * 6
+class UpperSection(private val dice: List<Die>) {
+
+    private val ones = dice.filter { it.face == Face.ONE }.size * 1
+    private val twos = dice.filter { it.face == Face.TWO }.size * 2
+    private val threes = dice.filter { it.face == Face.THREE }.size * 3
+    private val fours = dice.filter { it.face == Face.FOUR }.size * 4
+    private val fives = dice.filter { it.face == Face.FIVE }.size * 5
+    private val sixes = dice.filter { it.face == Face.SIX }.size * 6
 
     val fields =
         hashMapOf(

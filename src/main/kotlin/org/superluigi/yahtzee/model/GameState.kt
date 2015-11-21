@@ -1,11 +1,29 @@
 package org.superluigi.yahtzee.model
 
-import org.apache.commons.lang3.NotImplementedException
+import org.superluigi.yahtzee.ScoreSheet
+import org.superluigi.yahtzee.view.Face
 
 object GameState {
 
-    fun apply() {
-        throw NotImplementedException("Successful Fail! :)")
-    }
+    val dice =
+        listOf(
+            Die(Face.FIVE, false),
+            Die(Face.FIVE, false),
+            Die(Face.FIVE, false),
+            Die(Face.FIVE, false),
+            Die(Face.FIVE, false)
+        )
+
+    val userScoreSheet = ScoreSheet()
+    val aiScoreSheet = ScoreSheet()
+
+    var usersTurn = true
+
+    var diceRollsLeft = 3
+
+    var scoreSelection = false
+
+
+
 }
 

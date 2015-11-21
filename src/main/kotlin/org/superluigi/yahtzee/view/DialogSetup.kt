@@ -9,7 +9,7 @@ import javafx.scene.text.Font
 
 object DialogSetup {
 
-    fun addToGrid(grid: GridPane) {
+    fun apply(grid: GridPane): Label {
 
         val dialogRow = RowConstraints()
         dialogRow.percentHeight = 5.0
@@ -29,6 +29,8 @@ object DialogSetup {
         GridPane.setColumnSpan(borderPane, 10)
 
         grid.add(borderPane, 0, 3)
+
+        return dialogLabel
 
     }
 
