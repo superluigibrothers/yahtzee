@@ -1,30 +1,38 @@
 package org.superluigi.yahtzee.view
 
+import javafx.scene.control.Button
+import javafx.scene.control.Label
 import javafx.scene.layout.GridPane
-import org.superluigi.yahtzee.model.Die
-import org.superluigi.yahtzee.view.*
+import org.superluigi.yahtzee.model.GameState
 
 object Elements {
 
     val grid = GridPane()
+    val diceButtons: List<Button>
+    val rollButton: Button
+    val scoreSheetGrid: GridPane
+    val dialogLabel: Label
 
-    val dice =
-        listOf(
-            Die(Face.FIVE, false),
-            Die(Face.FIVE, false),
-            Die(Face.FIVE, false),
-            Die(Face.FIVE, false),
-            Die(Face.FIVE, false)
-        )
+    init {
 
-    val diceButtons = DiceToButtons.apply(dice)
+        grid.gridLinesVisibleProperty().set(true)
 
-    val diceGrid = DiceGridSetup.apply(grid, diceButtons)
+        val dice = GameState.dice
 
-    val rollButton = RollButtonSetup.apply(grid)
+        diceButtons = DiceToButtons.apply(dice)
 
-    val scoreSheetGrid = ScoreSheetSetup.apply(grid)
+        SetDiceAction.apply()
 
-    val dialogLabel = DialogSetup.apply(grid)
+        DiceGridSetup.apply(grid, diceButtons)
+
+        rollButton = RollButtonSetup.apply(grid)
+
+        SetRollButtonAction.roll()
+
+        scoreSheetGrid = ScoreSheetSetup.apply(grid)
+
+        dialogLabel = DialogSetup.apply(grid)
+
+    }
 
 }

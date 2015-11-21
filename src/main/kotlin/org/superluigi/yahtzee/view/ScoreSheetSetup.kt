@@ -14,7 +14,7 @@ object ScoreSheetSetup {
     val scoreSheetGridRow = RowConstraints()
     val scoreSheetRow = RowConstraints()
 
-    fun addToGrid(grid: GridPane) {
+    fun apply(grid: GridPane): GridPane {
 
         scoreSheetGrid.gridLinesVisibleProperty().set(true)
 
@@ -37,7 +37,7 @@ object ScoreSheetSetup {
 
         scoreSheetGridRow.percentHeight = 75.0
 
-        val userScoreSheetLabels = ScoreSheetLabels().labels
+        val userScoreSheetLabels = ScoreSheetLabels.labels
 
         val insets = Insets(0.0, 0.0, 0.0, 20.0)
         val font = Font("Lucida Console", 20.0)
@@ -54,6 +54,8 @@ object ScoreSheetSetup {
         grid.rowConstraints.add(scoreSheetGridRow)
 
         grid.add(scoreSheetGrid, 0, 2)
+
+        return scoreSheetGrid
 
     }
 
