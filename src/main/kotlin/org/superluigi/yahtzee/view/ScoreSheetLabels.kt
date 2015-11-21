@@ -2,7 +2,8 @@ package org.superluigi.yahtzee.view
 
 import javafx.scene.control.Label
 
-data class ScoreSheetLabels(
+object ScoreSheetLabels {
+
     val labels: List<Label> =
         listOf(
             Label("Ones"),
@@ -22,4 +23,5 @@ data class ScoreSheetLabels(
             Label("YAHTZEE"),
             Label("TOTAL")
         )
-)
+
+}

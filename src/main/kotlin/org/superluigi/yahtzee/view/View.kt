@@ -4,6 +4,7 @@ import javafx.application.Application
 import javafx.scene.Scene
 import javafx.scene.layout.GridPane
 import javafx.stage.Stage
+import org.superluigi.yahtzee.model.Die
 
 class View : Application() {
 
@@ -12,13 +13,28 @@ class View : Application() {
         val grid = GridPane()
         grid.gridLinesVisibleProperty().set(true)
 
-        Dice.addToGrid(grid)
+        val dice =
+            listOf(
+                Die(Face.FIVE, false),
+                Die(Face.FIVE, false),
+                Die(Face.FIVE, false),
+                Die(Face.FIVE, false),
+                Die(Face.FIVE, false)
+            )
 
-        RollButton.addToGrid(grid)
+        val diceButtons = DiceToButtons.apply(dice)
 
-        ScoreSheet.addToGrid(grid)
+        SetDiceAction.apply(dice, diceButtons)
 
-        Dialog.addToGrid(grid)
+        val diceGrid = DiceGridSetup.apply(grid, diceButtons)
+
+        val rollButton = RollButtonSetup.apply(grid)
+
+        SetRollButtonAction.apply(rollButton, dice, diceButtons)
+
+        val scoreSheetGrid = ScoreSheetSetup.apply(grid)
+
+        val dialogLabel = DialogSetup.apply(grid)
 
         val scene = Scene(grid, 750.0, 1000.0)
 
