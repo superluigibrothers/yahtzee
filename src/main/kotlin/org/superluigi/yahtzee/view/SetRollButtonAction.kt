@@ -2,25 +2,23 @@ package org.superluigi.yahtzee.view
 
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
-import javafx.scene.control.Button
 import org.superluigi.yahtzee.Roll
-import org.superluigi.yahtzee.model.Die
+import org.superluigi.yahtzee.ScoreSelection
+import org.superluigi.yahtzee.model.GameState
 
 object SetRollButtonAction {
 
-    fun apply(rollButton: Button,
-              dice: List<Die>,
-              diceButtons: List<Button>) {
+    fun roll() {
 
-        rollButton.text = "ROLL!"
+        Elements.rollButton.text = "ROLL!"
 
-        rollButton.onAction =
+        Elements.rollButton.onAction =
 
-            object: EventHandler<ActionEvent> {
+            object : EventHandler<ActionEvent> {
 
                 override fun handle(event: ActionEvent) {
 
-                    val diceToRoll = dice.filter { !it.locked }
+                    val diceToRoll = GameState.dice.filter { !it.locked }
 
                     diceToRoll.forEach { die ->
 
@@ -28,11 +26,34 @@ object SetRollButtonAction {
 
                     }
 
-                    dice.forEachIndexed { index, die ->
+                    GameState.dice.forEachIndexed { index, die ->
 
-                        val dieButton = diceButtons[index]
+                        val dieButton = Elements.diceButtons[index]
 
                         SetBackground.apply(die, dieButton)
+
+                    }
+
+                    GameState.diceRollsLeft--
+
+                    if (GameState.diceRollsLeft == 0) {
+
+                        GameState.diceRollsLeft = 3
+
+                        GameState.scoreSelection = true
+
+                        Elements.rollButton.text = "^__^"
+
+                        Elements.rollButton.onAction =
+
+                            object : EventHandler<ActionEvent> {
+
+                                override fun handle(event: ActionEvent) {
+                                }
+
+                            }
+
+                        ScoreSelection.apply()
 
                     }
 
@@ -42,5 +63,35 @@ object SetRollButtonAction {
 
     }
 
-}
+    fun selectScore() {
 
+        Elements.rollButton.onAction =
+
+            object : EventHandler<ActionEvent> {
+
+                override fun handle(event: ActionEvent) {
+
+                    GameState.diceRollsLeft = 3
+
+                    GameState.scoreSelection = true
+
+                    Elements.rollButton.text = "^__^"
+
+                    Elements.rollButton.onAction =
+
+                        object : EventHandler<ActionEvent> {
+
+                            override fun handle(event: ActionEvent) {
+                            }
+
+                        }
+
+                    ScoreSelection.apply()
+
+                }
+
+            }
+
+    }
+
+}

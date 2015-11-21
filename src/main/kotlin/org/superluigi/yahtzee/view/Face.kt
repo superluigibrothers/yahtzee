@@ -11,17 +11,18 @@ enum class Face(val path: String,
     SIX("src/main/resources/six.png", "src/main/resources/six-locked.png");
 
     companion object mapping {
-        fun fromInt(int: Int) =
 
-            when (int) {
+        fun toInteger(face: Face) =
 
-                1 -> ONE
-                2 -> TWO
-                3 -> THREE
-                4 -> FOUR
-                5 -> FIVE
-                6 -> SIX
-                else -> throw IllegalArgumentException("Die value must be between 1 and 6.")
+            when (face) {
+
+                ONE -> 1
+                TWO -> 2
+                THREE -> 3
+                FOUR -> 4
+                FIVE -> 5
+                SIX -> 6
+
             }
 
     }

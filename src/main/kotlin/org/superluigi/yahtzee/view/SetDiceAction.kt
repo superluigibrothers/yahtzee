@@ -2,17 +2,15 @@ package org.superluigi.yahtzee.view
 
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
-import javafx.scene.control.Button
-import org.superluigi.yahtzee.model.Die
+import org.superluigi.yahtzee.model.GameState
 
 object SetDiceAction {
 
-    fun apply(dice: List<Die>,
-              diceButtons: List<Button>) {
+    fun apply() {
 
-        dice.forEachIndexed { index, die ->
+        GameState.dice.forEachIndexed { index, die ->
 
-            val button = diceButtons[index]
+            val button = Elements.diceButtons[index]
 
             button.onAction =
                 object : EventHandler<ActionEvent> {
@@ -27,6 +25,14 @@ object SetDiceAction {
                         else {
 
                             die.locked = true
+
+                            if (GameState.dice.all { it.locked }) {
+
+                                Elements.rollButton.text = "Click to pick your score."
+
+                                SetRollButtonAction.selectScore()
+
+                            }
 
                         }
 

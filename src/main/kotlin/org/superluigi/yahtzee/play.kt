@@ -1,5 +1,5 @@
 package org.superluigi.yahtzee
-
+/*
 fun main(args: Array<String>) {
 
     val userScoreSheet = ScoreSheet()

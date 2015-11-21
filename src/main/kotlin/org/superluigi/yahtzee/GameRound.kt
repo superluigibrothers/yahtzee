@@ -1,12 +1,20 @@
 package org.superluigi.yahtzee
+<<<<<<< HEAD
+/*
+import org.superluigi.yahtzee.UserScoreSelection
+=======
+>>>>>>> 37573f5f6fbb8464b35457a98e5a292bec1163ec
 
 object GameRound {
 
     fun apply(scoreSheet: ScoreSheet,
               user: Boolean): ScoreSheet {
 
+<<<<<<< HEAD
+=======
         DisplayScoreSheet.apply(scoreSheet)
 
+>>>>>>> 37573f5f6fbb8464b35457a98e5a292bec1163ec
         val diceSelection =
             if (user)
                 { dice: List<Int> -> UserDiceSelection.apply(dice) }
