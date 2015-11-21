@@ -1,9 +1,8 @@
-package org.superluigi.yahtzee.view
+package org.superluigi.yahtzee.view.scoresheet
 
 import javafx.scene.layout.ColumnConstraints
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.RowConstraints
->>>>>>> vlad
 
 object ScoreSheetSetup {
 

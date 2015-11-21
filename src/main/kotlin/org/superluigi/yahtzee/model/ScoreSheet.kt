@@ -1,4 +1,4 @@
-package org.superluigi.yahtzee
+package org.superluigi.yahtzee.model
 
 import java.util.*
 

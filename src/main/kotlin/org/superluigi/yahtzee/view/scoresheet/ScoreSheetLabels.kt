@@ -1,0 +1,27 @@
+package org.superluigi.yahtzee.view.scoresheet
+
+import javafx.scene.control.Label
+
+object ScoreSheetLabels {
+
+    val labels: List<Label> =
+        listOf(
+            Label("Ones"),
+            Label("Twos"),
+            Label("Threes"),
+            Label("Fours"),
+            Label("Fives"),
+            Label("Sixes"),
+            Label("Sum"),
+            Label("Bonus"),
+            Label("Three of a kind"),
+            Label("Four of a kind"),
+            Label("Full House"),
+            Label("Small straight"),
+            Label("Large straight"),
+            Label("Chance"),
+            Label("YAHTZEE"),
+            Label("TOTAL")
+        )
+
+}

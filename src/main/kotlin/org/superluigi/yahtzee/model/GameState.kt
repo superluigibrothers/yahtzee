@@ -1,7 +1,7 @@
 package org.superluigi.yahtzee.model
 
-import org.superluigi.yahtzee.ScoreSheet
-import org.superluigi.yahtzee.view.Face
+import org.superluigi.yahtzee.model.ScoreSheet
+import org.superluigi.yahtzee.view.dice.Face
 
 object GameState {
 

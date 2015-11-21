@@ -1,12 +1,15 @@
-package org.superluigi.yahtzee.view
+package org.superluigi.yahtzee.view.scoresheet
 
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.geometry.Insets
 import javafx.scene.control.Button
 import javafx.scene.text.Font
-import org.superluigi.yahtzee.AddSelectedScore
+import org.superluigi.yahtzee.model.AddSelectedScore
 import org.superluigi.yahtzee.model.GameState
+import org.superluigi.yahtzee.view.Elements
+import org.superluigi.yahtzee.view.rollbutton.RollButtonSetup
+import org.superluigi.yahtzee.view.scoresheet.RefreshScoreSheet
 
 object ScoreSelectionButton {
 
@@ -25,7 +28,7 @@ object ScoreSelectionButton {
         button.maxWidth = Double.MAX_VALUE
         button.maxHeight = Double.MAX_VALUE
 
-        button.font = Font("Lucida Console", 30.0)
+        button.font = Font("Lucida Console", 25.0)
 
         button.onAction =
 

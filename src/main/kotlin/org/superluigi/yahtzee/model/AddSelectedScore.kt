@@ -1,4 +1,7 @@
-package org.superluigi.yahtzee
+package org.superluigi.yahtzee.model
+
+import org.superluigi.yahtzee.model.ScoreSheet
+import org.superluigi.yahtzee.model.Sum
 
 object AddSelectedScore {
 

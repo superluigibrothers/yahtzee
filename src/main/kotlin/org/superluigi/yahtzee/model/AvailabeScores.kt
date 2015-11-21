@@ -1,4 +1,8 @@
-package org.superluigi.yahtzee
+package org.superluigi.yahtzee.model
+
+import org.superluigi.yahtzee.model.LowerSection
+import org.superluigi.yahtzee.model.ScoreSheet
+import org.superluigi.yahtzee.model.UpperSection
 
 object AvailabeScores {
 
