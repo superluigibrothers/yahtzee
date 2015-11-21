@@ -1,10 +1,9 @@
 package org.superluigi.yahtzee.view
 
-import javafx.geometry.Insets
 import javafx.scene.layout.ColumnConstraints
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.RowConstraints
-import javafx.scene.text.Font
+>>>>>>> vlad
 
 object ScoreSheetSetup {
 
@@ -36,20 +35,6 @@ object ScoreSheetSetup {
         scoreSheetGrid.columnConstraints.add(scoreColumn)
 
         scoreSheetGridRow.percentHeight = 75.0
-
-        val userScoreSheetLabels = ScoreSheetLabels.labels
-
-        val insets = Insets(0.0, 0.0, 0.0, 20.0)
-        val font = Font("Lucida Console", 20.0)
-
-        userScoreSheetLabels.forEachIndexed { index, label ->
-
-            label.padding = insets
-            label.font = font
-
-            scoreSheetGrid.add(label, 0, index)
-
-        }
 
         grid.rowConstraints.add(scoreSheetGridRow)
 

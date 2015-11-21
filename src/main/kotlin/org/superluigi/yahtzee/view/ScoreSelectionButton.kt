@@ -45,6 +45,8 @@ object ScoreSelectionButton {
 
                     GameState.usersTurn = !GameState.usersTurn
 
+                    RefreshScoreSheet.apply()
+
                 }
 
             }

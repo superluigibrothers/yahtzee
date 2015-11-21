@@ -31,6 +31,8 @@ object Elements {
 
         scoreSheetGrid = ScoreSheetSetup.apply(grid)
 
+        AddScoreSheetLabels.apply()
+
         dialogLabel = DialogSetup.apply(grid)
 
     }
