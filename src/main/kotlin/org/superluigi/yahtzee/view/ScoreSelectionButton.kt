@@ -1,12 +1,12 @@
-package org.superluigi.yahtzee.view.scoresheet
+package org.superluigi.yahtzee.view
 
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import javafx.geometry.Insets
 import javafx.scene.control.Button
 import javafx.scene.text.Font
-import org.superluigi.yahtzee.view.Elements
-import org.superluigi.yahtzee.view.rollbutton.RollButtonSetup
+import org.superluigi.yahtzee.AddSelectedScore
+import org.superluigi.yahtzee.model.GameState
 
 object ScoreSelectionButton {
 
@@ -25,7 +25,7 @@ object ScoreSelectionButton {
         button.maxWidth = Double.MAX_VALUE
         button.maxHeight = Double.MAX_VALUE
 
-        button.font = Font("Lucida Console", 25.0)
+        button.font = Font("Lucida Console", 30.0)
 
         button.onAction =
 
@@ -33,7 +33,19 @@ object ScoreSelectionButton {
 
                 override fun handle(event: ActionEvent) {
 
-                    EndRoundAction.apply(field)
+                    val scoreSheet =
+                        if (GameState.usersTurn)
+                            GameState.userScoreSheet
+                        else
+                            GameState.aiScoreSheet
+
+                    AddSelectedScore.apply(scoreSheet, field)
+
+                    GameState.scoreSelection = false
+
+                    GameState.usersTurn = !GameState.usersTurn
+
+                    RefreshScoreSheet.apply()
 
                 }
 

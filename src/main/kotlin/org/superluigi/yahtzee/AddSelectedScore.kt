@@ -1,4 +1,4 @@
-package org.superluigi.yahtzee.model
+package org.superluigi.yahtzee
 
 object AddSelectedScore {
 
