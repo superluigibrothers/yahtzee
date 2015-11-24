@@ -2,8 +2,6 @@ package org.superluigi.yahtzee.view.scoresheet
 
 import org.superluigi.yahtzee.model.GameState
 import org.superluigi.yahtzee.view.Elements
-import org.superluigi.yahtzee.view.scoresheet.AddScoreSheetLabels
-import org.superluigi.yahtzee.view.scoresheet.AddScores
 
 object RefreshScoreSheet {
 

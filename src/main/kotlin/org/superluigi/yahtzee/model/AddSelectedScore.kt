@@ -1,8 +1,5 @@
 package org.superluigi.yahtzee.model
 
-import org.superluigi.yahtzee.model.ScoreSheet
-import org.superluigi.yahtzee.model.Sum
-
 object AddSelectedScore {
 
     fun apply(scoreSheet: ScoreSheet, selectedField: Pair<String, Int>): ScoreSheet {

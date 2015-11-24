@@ -34,19 +34,19 @@ object AddScores {
 
         if (sum != 0) {
 
-            AddScore.apply(sum, 1, 6)
+            AddScore.apply(sum, columnIndex, 6)
 
         }
 
         if (bonus != 0) {
 
-            AddScore.apply(bonus, 1, 7)
+            AddScore.apply(bonus, columnIndex, 7)
 
         }
 
         if (total != 0) {
 
-            AddScore.apply(total, 1, 15)
+            AddScore.apply(total, columnIndex, 15)
 
         }
 

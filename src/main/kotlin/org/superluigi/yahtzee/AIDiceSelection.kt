@@ -1,22 +1,27 @@
 package org.superluigi.yahtzee
 
+import org.superluigi.yahtzee.model.GameState
+import org.superluigi.yahtzee.view.Elements
+import org.superluigi.yahtzee.view.dice.ToggleLockAction
+import org.superluigi.yahtzee.view.rollbutton.ScoreSelectionAction
 import java.util.*
 
 object AIDiceSelection {
 
     // For now, the AI selects the dice to keep at random.
 
-    fun apply(dice: List<Int>): Pair<List<Int>, Boolean> {
+    fun apply() {
 
-        print("Select dice to keep: ")
+        val dice = GameState.dice
+        val buttons = Elements.diceButtons
 
         val random = Math.random()
 
-        if (random < 0.3) {
+        if (random < 0.1) {
 
-            println("1 2 3 4 5")
+            ScoreSelectionAction.apply()
 
-            return Pair(dice, true)
+            return
 
         }
 
@@ -28,23 +33,17 @@ object AIDiceSelection {
 
         val selectedIndices = allIndices.take(numKeptDice)
 
-        selectedIndices.forEach {
+        dice.forEachIndexed { index, die ->
 
-            print("${it + 1} ")
+            if (selectedIndices.contains(index)) {
 
-        }
+                val button = buttons[index]
 
-        println()
-
-        val keptDice =
-
-            dice.filterIndexed { index, die ->
-
-                selectedIndices.contains(index)
+                ToggleLockAction.apply(die, button)
 
             }
 
-        return Pair(keptDice, false)
+        }
 
     }
 
